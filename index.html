@@ -1,36 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Set Expansion : Given seed terms, expand the set">
+    <title>Set Expansion by deepjahan</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Set Expansion</title>
   </head>
-
   <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/deepjahan/set-expansion">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/deepjahan/set-expansion/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/deepjahan/set-expansion/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/deepjahan/set-expansion">View on GitHub</a>
+    <div class="wrapper">
 
-          <h1 id="project_title">Set Expansion</h1>
-          <h2 id="project_tagline">Given seed terms, expand the set</h2>
+      <section>
+        <div id="title">
+          <h1>Set Expansion</h1>
+          <p>Given seed terms, expand the set</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/deepjahan">deepjahan</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/deepjahan/set-expansion/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/deepjahan/set-expansion/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
         <h3>
 <a id="about-set-expansion" class="anchor" href="#about-set-expansion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>About Set Expansion</h3>
 
@@ -45,34 +52,26 @@
 <h3>
 <a id="crawling" class="anchor" href="#crawling" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Crawling</h3>
 
-<p>The first phase of the project involves crawling the webpages to get the information to work on. The seed terms are passed to a search API which gives back search results in form of web URLs. These web links are then downloaded, parsed and indexed. We need to</p>
+<p>The first phase of the project involves crawling the webpages to get the information to work on. The seed terms are passed to a search API which gives back search results in form of web URLs. These web links are then downloaded, parsed and indexed. We can now use certain techniques to find the required terms</p>
 
 <h3>
-<a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating pages manually</h3>
+<a id="word2vec" class="anchor" href="#word2vec" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Word2Vec</h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/#mentioning-users-and-teams" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>Word2vec is a powerful tool by which each word is represented as a vector in a vector space. The similarity between any two words can be calculated from their correspong vectors in this vector space. Wikipedia corpus was used to train this tool.</p>
 
 <h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
+<a id="pattern-recognition" class="anchor" href="#pattern-recognition" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pattern Recognition</h3>
 
-<p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
+<p>The other technique which can be used is pattern recognition. Here, we find a webpage where seed terms are stored in a pattern (for example, a table or a list). These patterns are recognized and the terms that are find within these patterns and does not belong to our seed set might complete the set. These patterns may also be referred to as wrappers that wraps the elements of a set. This technique does not require a dataset unlike word2vec and hence can find more terms. But, the reliability of the data is something to worry about.</p>
+
+<h3>
+<a id="contributers" class="anchor" href="#contributers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributers</h3>
+
+<p>Sandeep Kasa ( <a href="https://github.com/sandeepkasa" class="user-mention">@sandeepkasa</a> ) , Deep Jahan Grewal ( <a href="https://github.com/deepjahan" class="user-mention">@deepjahan</a> )  and Romil Punetha ( <a href="https://github.com/romilpunetha" class="user-mention">@romilpunetha</a> ) </p>
       </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Set Expansion maintained by <a href="https://github.com/deepjahan">deepjahan</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
-      </footer>
     </div>
-
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
-
   </body>
 </html>
