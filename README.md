@@ -1,2 +1,3 @@
 run:
-python getpage.py
+python main.py "query"
+query = seed terms = Ex : " python java perl php"
