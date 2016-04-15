@@ -5,7 +5,7 @@ Sandeep Kasa (201301145)
 
 Romil Punetha (201505568)
 
-Deep Jahan Grewal (201365124) [Team 55] [April 2016]
+Deep Jahan Grewal (201364124) [Team 25] [April 2016]
 
 Information Retrieval and Extraction (CSE474) Spring ‘16
 
