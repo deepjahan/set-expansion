@@ -55,6 +55,70 @@
 <p>The other technique which can be used is pattern recognition. Here, we find a webpage where seed terms are stored in a pattern (for example, a table or a list). These patterns are recognized and the terms that are found within these patterns and does not belong to our seed set might complete the set. These patterns may also be referred to as wrappers that wraps the elements of a set. This technique does not require a dataset unlike word2vec and hence can find more terms. But, the reliability of the data is something to worry about.</p>
 
 <h3>
+<a id="hybrid-model" class="anchor" href="#hybrid-model" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hybrid Model</h3>
+
+<p>A hybrid model was used. We take the top terms from wrod2vec and to increase accuracy, we lifted the rank of output terms which are also recognized by the pattern recognition technique. For example, fruit is related to both mango and banana according to word2vec but strawberry, orange apple etc. are what completes their set. It is very unlikely that fruit would be present in the same list or table as mango or banana on a website but other fruits are more likely to be. On the other hand, word2vec ensure the reliability of data found by pattern recognition.</p>
+
+<h3>
+<a id="sample-inputs-and-outputs" class="anchor" href="#sample-inputs-and-outputs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sample Inputs and Outputs</h3>
+
+<h4>
+<a id="input-" class="anchor" href="#input-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Input :</h4>
+
+<p>Cricket, Football, Volleyball</p>
+
+<h4>
+<a id="output-" class="anchor" href="#output-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Output :</h4>
+
+<p>1 : rugby</p>
+
+<p>2 : hockey</p>
+
+<p>3 : squash</p>
+
+<p>4 : bowling</p>
+
+<p>5 : tennis</p>
+
+<p>6 : sport</p>
+
+<p>7 : soccer</p>
+
+<p>8 : boxing</p>
+
+<p>9 : baseball</p>
+
+<p>10 : darts</p>
+
+<h4>
+<a id="input-phrase-queries-" class="anchor" href="#input-phrase-queries-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Input (phrase queries) :</h4>
+
+<p>A hot potato, Best of both worlds, Once in a blue moon</p>
+
+<h4>
+<a id="output--1" class="anchor" href="#output--1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Output :</h4>
+
+<p>1 : couch potato</p>
+
+<p>2 : kill two birds with one stone</p>
+
+<p>3 : cut corners</p>
+
+<p>4 : miss the boat</p>
+
+<p>5 : hear it on the grapevine</p>
+
+<p>6 : sit on the fence</p>
+
+<p>7 : see eye to eye</p>
+
+<p>8 : costs an arm and a leg</p>
+
+<p>9 : add insult to injury</p>
+
+<p>10 : a penny for your thoughts</p>
+
+<h3>
 <a id="tags" class="anchor" href="#tags" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tags</h3>
 
 <p>#IIITH #IIIT-H #MajorProject #IRE #InformationRetrievalAndExtraction #SetExpansion #Word2Vec #PatternRecognition #Wrappers #Crawling #SearchAPI #Google #Bing #DuckDuckGo #Wiki #Faroo #Twitter #WebHose #StackOverflow #Parsing #Indexing #StopWordsRemoval #Similarity</p>
