@@ -1,7 +1,6 @@
 import re
 from collections import Counter, defaultdict
 import operator
-
 result=[]
 def expandUsingPatterns(data,seeds):
 	patterns=[]
@@ -69,16 +68,20 @@ def expandUsingPatterns(data,seeds):
 				if i.isalpha():
 					result.append(i)
 
+	return result
+
 def main():
 	seeds=['php','java','perl','python']
-	file='htmloutput.html'
+	file='../htmloutput.html'
 	f=open(file,"r")
 	data=f.read()
 	data=data.split('**************  New PAGE *********************')
 	while '' in data: data.remove('')
+	out=[]
 	for i in data:
-		expandUsingPatterns(i,seeds)
+		out=out+expandUsingPatterns(i,seeds)
 	f.close()
-	return Counter(result)
+	out=Counter(out)
 
-print main()
+
+

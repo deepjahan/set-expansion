@@ -1,11 +1,30 @@
 import operator
 from gensim.models import word2vec
 import pattern.en as en
+from collections import Counter, defaultdict
+import sys
+sys.path.append('../')
+from patternRecogntion import expandUsingPatterns
 def find_similarity(query):
+
+	### Finding Patterns
+        a=query.split(",")
+	files='/home/sandy/SEM-6/IRE/Project/Mine/htmloutput.html'
+	ff=open(files,"r")
+	data=ff.read()
+	data=data.split('**************  New PAGE *********************')
+	while '' in data: data.remove('')
+	patternout=[]
+	for i in data:
+		patternout=patternout+expandUsingPatterns(i,a)
+
+	patternout=Counter(patternout)
+	
+	### Word2vec model
 	model1 = word2vec.Word2Vec.load_word2vec_format('./word2vec/wiki.model.bin', binary=True)
 	print "Model loaded"
 	print "\n"
-	a=query.split(",")
+#	a=query.split(",")
 	scores={}
 	f=open('./indexfile','r')
 	for i in a:
@@ -44,7 +63,25 @@ def find_similarity(query):
 			continue
 		k=k+1
 		output.append(key)
-		print k,":",key
-		if k==10:
+		if k==40:
 			break
+	cnt=0
+	final=[]
+	for res in output:
+		if res in patternout.keys():
+			cnt=cnt+1
+			final.append(res)
+			print cnt,":",res
+	 	if cnt==10:
+			break
+	if cnt<10:
+	  	for res in output:
+	  		if res not in final:
+	  			cnt=cnt+1
+	  			print cnt,":",res
+			if cnt==10:
+				break
+	  	
+	f.close()
+	ff.close()
 	

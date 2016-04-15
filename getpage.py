@@ -2,6 +2,7 @@ import urllib
 import sys
 import os
 from search import *
+import urllib2
 try: 
     from BeautifulSoup import BeautifulSoup
 except ImportError:
@@ -19,18 +20,19 @@ def getandparseurls(query):
 		os.remove('htmloutput.html')
 	fw=open('htmloutput.html','a')
 	for i in urls:
-        	req = urllib2.Request(urls[2], headers=hdr)
-		
+        	req = urllib2.Request(i, headers=hdr)
 		try:
 			f = urllib2.urlopen(req)
 		except urllib2.HTTPError, e:
-			print e.f.read()
+			print e.fp.read()
 
 		myfile = f.read()
 		fw.write(myfile)
 		fw.write("\n")
+		fw.write('**************  New PAGE *********************')
+		fw.write("\n")
 		k=k+1
-		break
+	
 	
 	print "HTML outpage file of all the above urls created"
 	print "\n"
