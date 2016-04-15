@@ -1,5 +1,6 @@
 import operator
 from gensim.models import word2vec
+import pattern.en as en
 def find_similarity(query):
 	model1 = word2vec.Word2Vec.load_word2vec_format('./word2vec/wiki.model.bin', binary=True)
 	print "Model loaded"
@@ -24,10 +25,25 @@ def find_similarity(query):
 	k=0
 	print "Printing Results"
 	print "\n"
+	flag=0
+	output=[]
 	for key,value in sorted_x:
 		if key in a:
 			continue
+		for j in a:
+			if en.lemma(key)==j or en.lemma(j)==key:
+				flag=1
+		if flag==1:
+			flag=0
+			continue
+		for ll in output:
+			if en.lemma(key)==ll or en.lemma(ll)==key:
+				flag=1
+		if flag==1:
+			flag=0
+			continue
 		k=k+1
+		output.append(key)
 		print k,":",key
 		if k==10:
 			break

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from HTMLParser import HTMLParser
 import re
+from nltk.stem.porter import *
 from nltk.corpus import stopwords
 import sys
 from getpage import getandparseurls
@@ -49,9 +50,14 @@ parser =MyHTMLParser()
 f=open('htmloutput.html','r')
 print "Parsing and getting all the tokens from the html output file\n"
 data=f.read()
-data=data.decode('utf-8')
+try:
+	data=data.decode('utf-8')
+except:
+	pass
 parser.feed(data)
 lst=set(lst)
+#stemm = PorterStemmer()
+#lst=[stemm.stem(word).encode('utf-8') for word in lst]
 #print len(lst)
 if os.path.isfile("indexfile"):
 	os.remove("indexfile")
