@@ -2,15 +2,15 @@ import re
 from collections import Counter, defaultdict
 import operator
 
-seeds=['python','java','perl','php']
-file='htmloutput3.html'
-def expandUsingPatterns(file,seeds):
-	f=open(file,'r')
+result=[]
+def expandUsingPatterns(data,seeds):
 	patterns=[]
 	wrappers=defaultdict(list)
 	for i in seeds:
 		j=i.lower()
 		patterns.append('(?=(<.*'+j+'.*>))')
+	f=data.split('\n')
+	while '' in f: f.remove('')
 	for line in f:
 		j=line.lower()
 		for p,s in zip(patterns,seeds):
@@ -38,7 +38,6 @@ def expandUsingPatterns(file,seeds):
 				M.append(Mk)
 			#print M
 			wrappers[tuple(M)].append(s)
-	f.close()
 	d=wrappers
 	#sorted_d = sorted(d.items(),key=operator.itemgetter(1))
 	#print sorted_d
@@ -50,23 +49,36 @@ def expandUsingPatterns(file,seeds):
 		elif len(set(d[i]))>2:
 			#print d[i],i
 			wrappers.append(i)
-	f=open(file,'r')
 	patterns=[]
 	for i in wrappers:
 		wrap=i[0]
 		for j in range(1,len(i)):
 			wrap=wrap+".*?"+i[j]
+		wrap = "(?=("+wrap+"))"
 		#print wrap
 		patterns.append(wrap)
-	result=[]
+	global result
 	for line in f:
 		j=line.lower()
 		for p,w in zip(patterns,wrappers):
 			m=re.findall(p,j)
 			for i in m:
+				#print j,"\n\n",i,"\n"
 				i=i.split(w[0])[1].split(w[1])[0].strip()
+				#print i,"\n"
 				if i.isalpha():
 					result.append(i)
-	print Counter(result)
 
-expandUsingPatterns(file,seeds)
+def main():
+	seeds=['php','java','perl','python']
+	file='htmloutput.html'
+	f=open(file,"r")
+	data=f.read()
+	data=data.split('**************  New PAGE *********************')
+	while '' in data: data.remove('')
+	for i in data:
+		expandUsingPatterns(i,seeds)
+	f.close()
+	return Counter(result)
+
+print main()
