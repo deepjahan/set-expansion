@@ -1,8 +1,16 @@
+import sys
+sys.path.append('word2vec')
+sys.path.append('PatternRecognition')
+sys.path.append('outputfiles')
+sys.path.append('Crawling')
+sys.path.append('API/googlesearch')
+sys.path.append('API/bing')
+sys.path.append('API/faroo.py-master')
+sys.path.append('API/wikisearch')
 import re
 from collections import Counter, defaultdict
 import operator
 import urllib
-import sys
 import os
 from search import *
 import urllib2
@@ -85,7 +93,7 @@ def main():
 	for i in range(len(seeds)):
 		seeds[i]=seeds[i].strip().lower()
 	getandparseurls(sys.argv[1])
-	file='htmloutput.html'
+	file='outputfiles/htmloutput.html'
 	f=open(file,"r")
 	data=f.read()
 	data=data.split('**************  New PAGE *********************')

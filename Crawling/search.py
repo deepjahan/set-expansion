@@ -1,4 +1,8 @@
 import sys
+sys.path.append('../API/googlesearch')
+sys.path.append('../API/bing')
+sys.path.append('../API/faroo.py-master')
+sys.path.append('../API/wikisearch')
 import urllib2,cookielib
 sys.path.append('googlesearch')
 from google1 import search

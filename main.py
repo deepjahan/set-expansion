@@ -1,12 +1,19 @@
 # -*- coding: utf-8 -*-
+import sys
+sys.path.append('word2vec')
+sys.path.append('PatternRecognition')
+sys.path.append('outputFiles')
+sys.path.append('Crawling')
+sys.path.append('API/googlesearch')
+sys.path.append('API/bing')
+sys.path.append('API/faroo.py-master')
+sys.path.append('API/wikisearch')
 from HTMLParser import HTMLParser
 import re
 from nltk.stem.porter import *
 from nltk.corpus import stopwords
-import sys
 from getpage import getandparseurls
 import os  
-sys.path.append('word2vec')
 from compare import find_similarity
 cachedStopWords = []
 for i in stopwords.words("english"):
@@ -47,7 +54,7 @@ class MyHTMLParser(HTMLParser):
 
 getandparseurls(sys.argv[1])
 parser =MyHTMLParser()
-f=open('htmloutput.html','r')
+f=open('outputfiles/htmloutput.html','r')
 print "Parsing and getting all the tokens from the html output file\n"
 data=f.read()
 try:
@@ -59,9 +66,9 @@ lst=set(lst)
 #stemm = PorterStemmer()
 #lst=[stemm.stem(word).encode('utf-8') for word in lst]
 #print len(lst)
-if os.path.isfile("indexfile"):
-	os.remove("indexfile")
-fw=open("indexfile",'w')
+if os.path.isfile("outputfiles/indexfile"):
+	os.remove("outputfiles/indexfile")
+fw=open("outputfiles/indexfile",'w')
 print "Writing all the tokens to a indexfile"
 for i in lst:
 	fw.write(str(i))
