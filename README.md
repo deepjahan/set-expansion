@@ -33,7 +33,7 @@ run:
 
 python main.py "query"
 
-query = seed terms = Ex : " python java perl php"
+query = Comma seperated list of seed terms = Ex : " python, java, perl, php"
 
 For phrase queries:
 
