@@ -38,3 +38,6 @@ query = seed terms = Ex : " python java perl php"
 For phrase queries:
 
 python phrases_main.py "query"
+
+
+PS : DOWNLOAD THE CODE FROM DROPBOX FOR RUNNING IT
