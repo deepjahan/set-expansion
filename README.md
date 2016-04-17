@@ -14,7 +14,7 @@ Professor: Vasudeva Verma
 Mentor: Mrugani Kurtadikar
 
 
-Artifacts Links
+Artifacts Links :
 
 Github Link : https://github.com/deepjahan/set-expansion/
 
@@ -25,6 +25,8 @@ Youtube Link : https://www.youtube.com/watch?v=2CyEcaAVpMo
 Dropbox Link to Report : https://www.dropbox.com/sh/tz3y9m26i4uzhd5/AAB-ndNU6MElyjearfdImB77a?dl=0
 
 Slideshare Link to PPT : http://www.slideshare.net/SandeepKasa/set-expansion 
+
+Wikipedia 13 GB dump used for training and building Word2Vec model : https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2
 
 
 run:
